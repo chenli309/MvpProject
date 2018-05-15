@@ -8,4 +8,90 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--水平线-->
+    <style name="color_horizontal_line_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/color_cbeeeeee</item>
+    </style>
+    <!--竖直线-->
+    <style name="color_vertical_line_style">
+        <item name="android:layout_width">@dimen/divider_height</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_cbeeeeee</item>
+    </style>
+    <!--水平线-->
+    <style name="color_horizontal_line_f4_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/color_cbf4f4f4</item>
+    </style>
+    <!--竖直线-->
+    <style name="color_vertical_line_f4_style">
+        <item name="android:layout_width">@dimen/divider_height</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_cbf4f4f4</item>
+    </style>
+
+
+    <!--小号字体-->
+    <style name="theme_small">
+        <item name="font_size_10">@dimen/f10</item>
+        <item name="font_size_11">@dimen/f11</item>
+        <item name="font_size_12">@dimen/f12</item>
+        <item name="font_size_13">@dimen/f13</item>
+        <item name="font_size_14">@dimen/f14</item>
+        <item name="font_size_15">@dimen/f15</item>
+        <item name="font_size_16">@dimen/f16</item>
+        <item name="font_size_17">@dimen/f17</item>
+        <item name="font_size_18">@dimen/f18</item>
+        <item name="font_size_19">@dimen/f19</item>
+        <item name="font_size_20">@dimen/f20</item>
+        <item name="font_size_21">@dimen/f21</item>
+        <item name="font_size_22">@dimen/f22</item>
+        <item name="font_size_23">@dimen/f23</item>
+        <item name="font_size_24">@dimen/f24</item>
+        <item name="font_size_25">@dimen/f25</item>
+        <item name="font_size_26">@dimen/f26</item>
+    </style>
+    <style name="theme_medium">
+        <item name="font_size_10">@dimen/f10</item>
+        <item name="font_size_11">@dimen/f11</item>
+        <item name="font_size_12">@dimen/f12</item>
+        <item name="font_size_13">@dimen/f13</item>
+        <item name="font_size_14">@dimen/f14</item>
+        <item name="font_size_15">@dimen/f15</item>
+        <item name="font_size_16">@dimen/f16</item>
+        <item name="font_size_17">@dimen/f17</item>
+        <item name="font_size_18">@dimen/f18</item>
+        <item name="font_size_19">@dimen/f19</item>
+        <item name="font_size_20">@dimen/f20</item>
+        <item name="font_size_21">@dimen/f21</item>
+        <item name="font_size_22">@dimen/f22</item>
+        <item name="font_size_23">@dimen/f23</item>
+        <item name="font_size_24">@dimen/f24</item>
+        <item name="font_size_25">@dimen/f25</item>
+        <item name="font_size_26">@dimen/f26</item>
+    </style>
+    <style name="theme_large">
+        <item name="font_size_10">@dimen/f10</item>
+        <item name="font_size_11">@dimen/f11</item>
+        <item name="font_size_12">@dimen/f12</item>
+        <item name="font_size_13">@dimen/f13</item>
+        <item name="font_size_14">@dimen/f14</item>
+        <item name="font_size_15">@dimen/f15</item>
+        <item name="font_size_16">@dimen/f16</item>
+        <item name="font_size_17">@dimen/f17</item>
+        <item name="font_size_18">@dimen/f18</item>
+        <item name="font_size_19">@dimen/f19</item>
+        <item name="font_size_20">@dimen/f20</item>
+        <item name="font_size_21">@dimen/f21</item>
+        <item name="font_size_22">@dimen/f22</item>
+        <item name="font_size_23">@dimen/f23</item>
+        <item name="font_size_24">@dimen/f24</item>
+        <item name="font_size_25">@dimen/f25</item>
+        <item name="font_size_26">@dimen/f26</item>
+    </style>
+    <!--设计规范颜色 end-->
+
 </resources>

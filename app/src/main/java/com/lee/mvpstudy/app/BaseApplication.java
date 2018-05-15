@@ -3,6 +3,8 @@ package com.lee.mvpstudy.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.blankj.utilcode.util.Utils;
+
 /**
  * Func:    一句话描述.<br/>
  * Date:    2018/5/7 16:47<br/>
@@ -16,6 +18,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+
+        Utils.init(this);
     }
 
     public static Context getContext() {

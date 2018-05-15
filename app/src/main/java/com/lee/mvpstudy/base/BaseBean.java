@@ -1,6 +1,8 @@
 package com.lee.mvpstudy.base;
 
-public class BaseBean {
+import java.io.Serializable;
+
+public class BaseBean implements Serializable {
 
     public static String SUCCESS = "000";
     public static String SIGN_OUT = "101";//token验证失败
@@ -8,6 +10,8 @@ public class BaseBean {
 
     private String code;
     private String message;
+
+    private boolean error;
 
     public String getCode() {
         return code;
@@ -18,7 +22,7 @@ public class BaseBean {
     }
 
     public boolean isSuccess() {
-        return SUCCESS.equals(code);
+        return !error; //SUCCESS.equals(code);
     }
 
     public boolean isTokenInvalid() {

@@ -20,7 +20,7 @@ public class BaseModel<T> {
     /**
      * 封装线程管理和订阅的过程
      */
-    public void Subscribe(Context context, final Observable observable, ObserverOnNextListener<T> listener) {
+    public void subscribe(Context context, final Observable observable, ObserverOnNextListener<T> listener) {
         final Observer<T> observer = new ProgressObserver<T>(context, listener);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -28,7 +28,7 @@ public class BaseModel<T> {
                 .subscribe(observer);
     }
 
-    public void Subscribe(RxBaseActivity context, final Observable observable, ObserverOnNextListener<T> listener) {
+    public void subscribe(RxBaseActivity context, final Observable observable, ObserverOnNextListener<T> listener) {
         final Observer<T> observer = new ProgressObserver<T>(context, listener);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -37,7 +37,7 @@ public class BaseModel<T> {
                 .subscribe(observer);
     }
 
-    public void Subscribe(RxBaseFragment context, final Observable observable, ObserverOnNextListener<T> listener) {
+    public void subscribe(RxBaseFragment context, final Observable observable, ObserverOnNextListener<T> listener) {
         final Observer<T> observer = new ProgressObserver<T>(context.getContext(), listener);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

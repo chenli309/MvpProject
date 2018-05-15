@@ -2,7 +2,7 @@ package com.lee.mvpstudy.http;
 
 public class Api {
 
-    private String baseUrl = "http://gc.ditu.aliyun.com/";//阿里云根据地区名获取经纬度接口
+    private String baseUrl = "http://gank.io/api/";
 
     private volatile static ApiService apiService;
 

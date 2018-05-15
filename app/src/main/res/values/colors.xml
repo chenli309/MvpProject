@@ -3,4 +3,22 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="ripple_f7f5f5_color">#ffF7F5F5</color>
+    <color name="ripple_common_color">#ffdcdcdc</color>
+    <color name="ripple_orange_color">#2f000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="color_cb333333">#333333</color>
+    <color name="color_cb666666">#666666</color>
+    <color name="color_cb888888">#888888</color>
+    <color name="color_cb999999">#999999</color>
+    <color name="color_cbcccccc">#CCCCCC</color>
+    <color name="color_cbe7e7e7">#e7e7e7</color>
+    <color name="color_cbeeeeee">#eeeeee</color>
+    <color name="color_cbf4f4f4">#f4f4f4</color>
+    <color name="color_cbf8f8f8">#F8F8F8</color>
+    <color name="color_cbfafbfc">#FAFBFC</color>
+    <color name="color_cw">#FFFFFF</color>
+    <color name="color_cr1">#DF6F3F</color>
 </resources>

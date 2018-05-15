@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--字体样式 大中小 zhong start-->
+    <attr name="font_size_10" format="dimension"/>
+    <attr name="font_size_11" format="dimension"/>
+    <attr name="font_size_12" format="dimension"/>
+    <attr name="font_size_13" format="dimension"/>
+    <attr name="font_size_14" format="dimension"/>
+    <attr name="font_size_15" format="dimension"/>
+    <attr name="font_size_16" format="dimension"/>
+    <attr name="font_size_17" format="dimension"/>
+    <attr name="font_size_18" format="dimension"/>
+    <attr name="font_size_19" format="dimension"/>
+    <attr name="font_size_20" format="dimension"/>
+    <attr name="font_size_21" format="dimension"/>
+    <attr name="font_size_22" format="dimension"/>
+    <attr name="font_size_23" format="dimension"/>
+    <attr name="font_size_24" format="dimension"/>
+    <attr name="font_size_25" format="dimension"/>
+    <attr name="font_size_26" format="dimension"/>
+    <!--字体样式 大中小 zhong end-->
+
+</resources>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MvpProject</string>
+
+    <string name="loading">加载中&#8230;</string>
+    <string name="load_more_end">没有更多了</string>
+    <string name="load_failed">加载失败</string>
+
 </resources>
