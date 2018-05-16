@@ -52,7 +52,7 @@ public class HomePresenter implements HomeContract.Presenter {
             @Override
             public void onSuccess(CategoryResult categoryResult) {
                 if (!ListUtils.isEmpty(categoryResult.results)) {
-                    mView.setPageData(categoryResult.results);
+                    mView.setRequestData(categoryResult.results);
                     mView.showPageContent();
                 } else {
                     mView.showPageEmpty();
@@ -69,6 +69,34 @@ public class HomePresenter implements HomeContract.Presenter {
             public void onFailure(Throwable e, boolean isNetWorkError) {
                 super.onFailure(e, isNetWorkError);
                 mView.showPageError();
+            }
+        });
+    }
+
+    @Override
+    public void loadMoreCategory(RxBaseActivity activity, String category, int number, int page) {
+        model.subscribe(activity, Api.getApiService().getCategoryDate(category, number, page), new ObserverOnNextAdapter<CategoryResult>() {
+
+            @Override
+            public void onSuccess(CategoryResult categoryResult) {
+                if (!ListUtils.isEmpty(categoryResult.results)) {
+                    mView.setRequestLoadMoreData(categoryResult.results);
+                    mView.showPageContent();
+                } else {
+                    mView.showPageEmpty();
+                }
+            }
+
+            @Override
+            public void onCodeError(CategoryResult categoryResult) {
+                super.onCodeError(categoryResult);
+                mView.showMsg(categoryResult.getMessage());
+            }
+
+            @Override
+            public void onFailure(Throwable e, boolean isNetWorkError) {
+                super.onFailure(e, isNetWorkError);
+                mView.showMsg(e.getMessage());
             }
         });
     }

@@ -3,9 +3,14 @@ package com.lee.mvpstudy.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
+import com.lee.mvpstudy.R;
+import com.lee.mvpstudy.bean.RequestPageBean;
 import com.lee.mvpstudy.mvp.BasePresenter;
 import com.lee.mvpstudy.mvp.BaseView;
+import com.lee.mvpstudy.view.LeeMultipleStatusView;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
@@ -17,6 +22,10 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
     protected boolean isActive;
 
     protected P mPresenter;
+
+    private LeeMultipleStatusView mLayoutStatusView;
+
+    protected RequestPageBean mPageBean = new RequestPageBean();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +41,7 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
 
         initView();
         initData();
+        initListener();
 
         if (mPresenter != null) {
             mPresenter.onPresenterStart();
@@ -51,6 +61,24 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
     protected abstract void initView();
 
     protected abstract void initData();
+
+    protected void initListener() {
+        mLayoutStatusView = findViewById(R.id.multipleStatusView);
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.setOnClickListener(mRetryClickListener);
+        }
+    }
+
+    private View.OnClickListener mRetryClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onRetryClick();
+        }
+    };
+
+    protected void onRetryClick() {
+
+    }
 
 //    /**
 //     * 是否使用EventBus
@@ -116,32 +144,40 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
 
     @Override
     public void showMsg(String message) {
-
+        ToastUtils.showLong(message);
     }
 
     @Override
     public void showMsg(int stringId) {
-
+        ToastUtils.showLong(stringId);
     }
 
     @Override
     public void showPageLoading() {
-
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.showStatusLoadingView();
+        }
     }
 
     @Override
     public void showPageEmpty() {
-
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.showStatusEmptyView();
+        }
     }
 
     @Override
     public void showPageError() {
-
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.showStatusErrorView();
+        }
     }
 
     @Override
     public void showPageContent() {
-
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.showStatusContentView();
+        }
     }
     // ************************************ BaseView 实现方法 end *****************************************
 

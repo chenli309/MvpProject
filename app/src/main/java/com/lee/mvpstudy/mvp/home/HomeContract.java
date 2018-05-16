@@ -11,12 +11,15 @@ public class HomeContract {
 
     public interface View extends BaseView {
 
-        void setPageData(List<CategoryResult.ResultsBean> results);
+        void setRequestData(List<CategoryResult.ResultsBean> results);
+
+        void setRequestLoadMoreData(List<CategoryResult.ResultsBean> results);
     }
 
     public interface Presenter extends BasePresenter {
 
         void requestCategory(RxBaseActivity activity, String category, int number, int page);
 
+        void loadMoreCategory(RxBaseActivity activity, String category, int number, int page);
     }
 }

@@ -2,6 +2,7 @@ package com.lee.mvpstudy.activity.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -13,12 +14,15 @@ import com.lee.mvpstudy.bean.CategoryResult;
 import com.lee.mvpstudy.http.HttpConfig;
 import com.lee.mvpstudy.mvp.home.HomeContract;
 import com.lee.mvpstudy.mvp.home.HomePresenter;
+import com.lee.mvpstudy.util.ListUtils;
 import com.lee.mvpstudy.view.LeeRecyclerView;
+import com.lee.mvpstudy.view.LeeSwipeRefreshLayout;
 
 import java.util.List;
 
-public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeContract.View, BaseQuickAdapter.RequestLoadMoreListener {
+public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
 
+    private LeeSwipeRefreshLayout swipeRefreshLayout;
     private LeeRecyclerView recyclerView;
     private HomeAdapter mAdapter;
 
@@ -41,9 +45,14 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
 
     @Override
     protected void initView() {
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+
+        showPageLoading();
     }
 
     @Override
@@ -59,16 +68,39 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
         });
         recyclerView.setAdapter(mAdapter, this);
 
-        mPresenter.requestCategory(this, HttpConfig.CATEGORY_NAME_ANDROID, 12, 1);
+        onRefresh();
     }
 
     @Override
-    public void setPageData(List<CategoryResult.ResultsBean> results) {
+    public void onRefresh() {
+        mPageBean.firstPage();
+        mAdapter.setEnableLoadMore(false);
+        mPresenter.requestCategory(this, HttpConfig.CATEGORY_NAME_ANDROID, mPageBean.size, mPageBean.no);
+    }
+
+    @Override
+    public void setRequestData(List<CategoryResult.ResultsBean> results) {
         mAdapter.setNewData(results);
+        mAdapter.setEnableLoadMore(true);
+        mAdapter.setLoadMoreStatus(mPageBean.isHaveNextPage(results.size()));
+
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void onLoadMoreRequested() {
+        mPresenter.loadMoreCategory(this, HttpConfig.CATEGORY_NAME_ANDROID, mPageBean.size, mPageBean.nextPage());
+    }
 
+    @Override
+    public void setRequestLoadMoreData(List<CategoryResult.ResultsBean> results) {
+        if (ListUtils.isEmpty(results)) {
+            mAdapter.setLoadMoreStatus(0);
+            return;
+        }
+
+        mPageBean.addPageNo();
+        mAdapter.addData(results);
+        mAdapter.setLoadMoreStatus(mPageBean.isHaveNextPage(results.size()));
     }
 }

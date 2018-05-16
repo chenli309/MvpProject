@@ -18,16 +18,22 @@ public class LeeRecyclerView extends RecyclerView {
     public LeeRecyclerView(Context context) {
         super(context);
         this.context = context;
+
+//        addOnPauseListenerParams();
     }
 
     public LeeRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
+
+//        addOnPauseListenerParams();
     }
 
     public LeeRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context = context;
+
+//        addOnPauseListenerParams();
     }
 
     public void addItemDecoration(int space) {

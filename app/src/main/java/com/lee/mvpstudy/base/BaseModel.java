@@ -1,9 +1,7 @@
 package com.lee.mvpstudy.base;
 
 import android.content.Context;
-import android.text.TextUtils;
 
-import com.lee.mvpstudy.http.ApiException;
 import com.lee.mvpstudy.progress.ObserverOnNextListener;
 import com.lee.mvpstudy.progress.ProgressObserver;
 
@@ -13,15 +11,19 @@ import io.reactivex.ObservableTransformer;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class BaseModel<T> {
+
+    public void subscribe(Context context, final Observable observable, ObserverOnNextListener<T> listener) {
+        subscribe(context, observable, false, listener);
+    }
+
     /**
      * 封装线程管理和订阅的过程
      */
-    public void subscribe(Context context, final Observable observable, ObserverOnNextListener<T> listener) {
-        final Observer<T> observer = new ProgressObserver<T>(context, listener);
+    public void subscribe(Context context, final Observable observable, boolean isShowProgressDialog, ObserverOnNextListener<T> listener) {
+        final Observer<T> observer = new ProgressObserver<T>(context, isShowProgressDialog, listener);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -29,7 +31,11 @@ public class BaseModel<T> {
     }
 
     public void subscribe(RxBaseActivity context, final Observable observable, ObserverOnNextListener<T> listener) {
-        final Observer<T> observer = new ProgressObserver<T>(context, listener);
+        subscribe(context, observable, false, listener);
+    }
+
+    public void subscribe(RxBaseActivity context, final Observable observable, boolean isShowProgressDialog, ObserverOnNextListener<T> listener) {
+        final Observer<T> observer = new ProgressObserver<T>(context, isShowProgressDialog, listener);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .compose(getObservableTransformer(context))
@@ -38,6 +44,10 @@ public class BaseModel<T> {
     }
 
     public void subscribe(RxBaseFragment context, final Observable observable, ObserverOnNextListener<T> listener) {
+        subscribe(context, observable, false, listener);
+    }
+
+    public void subscribe(RxBaseFragment context, final Observable observable, boolean isShowProgressDialog, ObserverOnNextListener<T> listener) {
         final Observer<T> observer = new ProgressObserver<T>(context.getContext(), listener);
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

@@ -24,6 +24,7 @@ public class ProgressObserver<T> implements Observer<T>, ProgressCancelListener 
     private ProgressDialogHandler mProgressDialogHandler;
     private Context context;
     private Disposable d;
+    private boolean isShowProgressDialog = false;
 
     public ProgressObserver(Context context, ObserverOnNextListener listener) {
         this.listener = listener;
@@ -31,17 +32,22 @@ public class ProgressObserver<T> implements Observer<T>, ProgressCancelListener 
         mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
     }
 
+    public ProgressObserver(Context context, boolean isShowProgressDialog, ObserverOnNextListener listener) {
+        this.listener = listener;
+        this.context = context;
+        this.isShowProgressDialog = isShowProgressDialog;
+        mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
+    }
 
     private void showProgressDialog() {
-        if (mProgressDialogHandler != null) {
+        if (mProgressDialogHandler != null && isShowProgressDialog) {
             mProgressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
         }
     }
 
     private void dismissProgressDialog() {
-        if (mProgressDialogHandler != null) {
-            mProgressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG)
-                    .sendToTarget();
+        if (mProgressDialogHandler != null && isShowProgressDialog) {
+            mProgressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             mProgressDialogHandler = null;
         }
     }
