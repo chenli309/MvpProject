@@ -5,14 +5,19 @@ public interface BaseView {
 //    public void setPresenter(T presenter);
 
     /**
-     * 显示加载
+     * 显示加载 (ProgressDialog)
      */
-    public void showLoading();
+    void showLoading();
 
     /**
-     * 隐藏加载
+     * 隐藏加载 (ProgressDialog或者下拉刷新)
      */
-    public void hideLoading();
+    void hideLoading();
+
+    /**
+     * RecyclerView加载更多失败
+     */
+    void loadMoreFail();
 
     /**
      * 显示信息

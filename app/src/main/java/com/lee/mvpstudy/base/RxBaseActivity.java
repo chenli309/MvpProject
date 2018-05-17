@@ -143,6 +143,11 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
     }
 
     @Override
+    public void loadMoreFail() {
+
+    }
+
+    @Override
     public void showMsg(String message) {
         ToastUtils.showLong(message);
     }

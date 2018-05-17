@@ -57,18 +57,21 @@ public class HomePresenter implements HomeContract.Presenter {
                 } else {
                     mView.showPageEmpty();
                 }
+                mView.hideLoading();
             }
 
             @Override
             public void onCodeError(CategoryResult categoryResult) {
                 super.onCodeError(categoryResult);
                 mView.showPageError();
+                mView.hideLoading();
             }
 
             @Override
             public void onFailure(Throwable e, boolean isNetWorkError) {
                 super.onFailure(e, isNetWorkError);
                 mView.showPageError();
+                mView.hideLoading();
             }
         });
     }
@@ -79,24 +82,21 @@ public class HomePresenter implements HomeContract.Presenter {
 
             @Override
             public void onSuccess(CategoryResult categoryResult) {
-                if (!ListUtils.isEmpty(categoryResult.results)) {
-                    mView.setRequestLoadMoreData(categoryResult.results);
-                    mView.showPageContent();
-                } else {
-                    mView.showPageEmpty();
-                }
+                mView.setRequestLoadMoreData(categoryResult.results);
             }
 
             @Override
             public void onCodeError(CategoryResult categoryResult) {
                 super.onCodeError(categoryResult);
                 mView.showMsg(categoryResult.getMessage());
+                mView.loadMoreFail();
             }
 
             @Override
             public void onFailure(Throwable e, boolean isNetWorkError) {
                 super.onFailure(e, isNetWorkError);
                 mView.showMsg(e.getMessage());
+                mView.loadMoreFail();
             }
         });
     }

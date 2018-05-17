@@ -82,8 +82,12 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
     public void setRequestData(List<CategoryResult.ResultsBean> results) {
         mAdapter.setNewData(results);
         mAdapter.setEnableLoadMore(true);
-        mAdapter.setLoadMoreStatus(mPageBean.isHaveNextPage(results.size()));
+        mAdapter.setLoadMoreStatus(results.size());
+    }
 
+    @Override
+    public void hideLoading() {
+        super.hideLoading();
         swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -101,6 +105,12 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
 
         mPageBean.addPageNo();
         mAdapter.addData(results);
-        mAdapter.setLoadMoreStatus(mPageBean.isHaveNextPage(results.size()));
+        mAdapter.setLoadMoreStatus(results.size());
+    }
+
+    @Override
+    public void loadMoreFail() {
+        super.loadMoreFail();
+        mAdapter.loadMoreFail();
     }
 }
