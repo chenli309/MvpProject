@@ -8,6 +8,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
     <application
         android:name=".app.BaseApplication"
         android:allowBackup="true"
@@ -23,7 +32,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.home.HomeActivity" />
+
+        <activity
+            android:name=".activity.home.HomeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.H5Activity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".webview.X5NetService"
+            android:enabled="true" />
+
     </application>
 
 </manifest>

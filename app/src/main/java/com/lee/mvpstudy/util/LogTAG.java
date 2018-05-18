@@ -1,0 +1,15 @@
+package com.lee.mvpstudy.util;
+
+/**
+ * 日志TAG  方便开发人员寻找日志TAG
+ */
+
+public final class LogTag {
+
+    public static final String login = "login";
+    public static final String okhttp = "okhttp";
+    public static final String x5webview = "x5webview";
+    public static final String net = "net";
+    public static final String cookie = "cookie";
+
+}

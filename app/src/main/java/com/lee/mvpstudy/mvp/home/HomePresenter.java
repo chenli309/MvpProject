@@ -35,7 +35,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void onPresenterStart() {
-
+        mView.requestStart();
     }
 
     @Override

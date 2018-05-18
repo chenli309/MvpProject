@@ -5,6 +5,11 @@ public interface BaseView {
 //    public void setPresenter(T presenter);
 
     /**
+     * 开始发起网络请求
+     */
+    void requestStart();
+
+    /**
      * 显示加载 (ProgressDialog)
      */
     void showLoading();

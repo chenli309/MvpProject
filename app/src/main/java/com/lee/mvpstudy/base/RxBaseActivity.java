@@ -39,6 +39,8 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
             setContentView(layoutId);
         }
 
+        initMultipleStatusView();
+
         initView();
         initData();
         initListener();
@@ -58,15 +60,19 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
 
     protected abstract int getContentViewId();
 
+    protected void initMultipleStatusView() {
+        mLayoutStatusView = findViewById(R.id.multipleStatusView);
+        showPageLoading();
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.setOnRetryClickListener(mRetryClickListener);
+        }
+    }
+
     protected abstract void initView();
 
     protected abstract void initData();
 
     protected void initListener() {
-        mLayoutStatusView = findViewById(R.id.multipleStatusView);
-        if (mLayoutStatusView != null) {
-            mLayoutStatusView.setOnClickListener(mRetryClickListener);
-        }
     }
 
     private View.OnClickListener mRetryClickListener = new View.OnClickListener() {
@@ -132,6 +138,11 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
     }
 
     // ************************************ BaseView 实现方法 start *****************************************
+    @Override
+    public void requestStart() {
+
+    }
+
     @Override
     public void showLoading() {
 
