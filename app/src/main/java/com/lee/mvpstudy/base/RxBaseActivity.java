@@ -10,6 +10,7 @@ import com.lee.mvpstudy.R;
 import com.lee.mvpstudy.bean.RequestPageBean;
 import com.lee.mvpstudy.mvp.BasePresenter;
 import com.lee.mvpstudy.mvp.BaseView;
+import com.lee.mvpstudy.util.ClickUtils;
 import com.lee.mvpstudy.view.LeeMultipleStatusView;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.android.ActivityEvent;
@@ -43,7 +44,6 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
 
         initView();
         initData();
-        initListener();
 
         if (mPresenter != null) {
             mPresenter.onPresenterStart();
@@ -56,10 +56,19 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
         }
     }
 
+    /**
+     * 从Bundle中获取数据
+     */
     protected abstract void getDataFromBundle(@Nullable Bundle savedInstanceState);
 
+    /**
+     * 获取页面布局
+     */
     protected abstract int getContentViewId();
 
+    /**
+     * 初始化MultipleStatusView
+     */
     protected void initMultipleStatusView() {
         mLayoutStatusView = findViewById(R.id.multipleStatusView);
         showPageLoading();
@@ -68,12 +77,15 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
         }
     }
 
+    /**
+     * 初始化布局控件
+     */
     protected abstract void initView();
 
+    /**
+     * 初始化数据
+     */
     protected abstract void initData();
-
-    protected void initListener() {
-    }
 
     private View.OnClickListener mRetryClickListener = new View.OnClickListener() {
         @Override
@@ -84,6 +96,25 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
 
     protected void onRetryClick() {
 
+    }
+
+    protected View.OnClickListener mCommonClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            if (!isActive) {
+                return;
+            }
+
+            // 防止快速点击
+            if (ClickUtils.isFastDoubleClick(v.getId())) { // 1秒之内只执行一次
+                return;
+            }
+            onCommonViewClick(v);
+        }
+    };
+
+    protected void onCommonViewClick(View view) {
     }
 
 //    /**

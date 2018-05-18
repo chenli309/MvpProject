@@ -10,6 +10,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lee.mvpstudy.R;
 import com.lee.mvpstudy.mvp.BasePresenter;
 import com.lee.mvpstudy.mvp.BaseView;
+import com.lee.mvpstudy.util.ClickUtils;
 import com.lee.mvpstudy.view.LeeMultipleStatusView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -34,9 +35,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             setContentView(layoutId);
         }
 
+        initMultipleStatusView();
         initView();
         initData();
-        initListener();
 
         if (mPresenter != null) {
             mPresenter.onPresenterStart();
@@ -53,16 +54,26 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected abstract int getContentViewId();
 
-    protected abstract void initView();
-
-    protected abstract void initData();
-
-    protected void initListener() {
+    /**
+     * 初始化MultipleStatusView
+     */
+    protected void initMultipleStatusView() {
         mLayoutStatusView = findViewById(R.id.multipleStatusView);
+        showPageLoading();
         if (mLayoutStatusView != null) {
-            mLayoutStatusView.setOnClickListener(mRetryClickListener);
+            mLayoutStatusView.setOnRetryClickListener(mRetryClickListener);
         }
     }
+
+    /**
+     * 初始化布局控件
+     */
+    protected abstract void initView();
+
+    /**
+     * 初始化数据
+     */
+    protected abstract void initData();
 
     private View.OnClickListener mRetryClickListener = new View.OnClickListener() {
         @Override
@@ -73,6 +84,25 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected void onRetryClick() {
 
+    }
+
+    protected View.OnClickListener mCommonClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            if (!isActive) {
+                return;
+            }
+
+            // 防止快速点击
+            if (ClickUtils.isFastDoubleClick(v.getId())) { // 1秒之内只执行一次
+                return;
+            }
+            onCommonViewClick(v);
+        }
+    };
+
+    protected void onCommonViewClick(View view) {
     }
 
 //    /**
@@ -127,6 +157,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     // ************************************ BaseView 实现方法 start *****************************************
+
+    @Override
+    public void requestStart() {
+
+    }
+
     @Override
     public void showLoading() {
 
