@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <com.lee.mvpstudy.view.LeeSwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <com.lee.mvpstudy.view.LeeRecyclerView
             android:id="@+id/recyclerView"
@@ -23,20 +17,16 @@
 
     <com.lee.mvpstudy.view.LeeMultipleStatusView
         android:id="@+id/multipleStatusView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:msv_emptyView="@layout/multiple_status_empty_view"
         app:msv_errorView="@layout/multiple_status_error_view"
         app:msv_loadingView="@layout/multiple_status_loading_view"
         app:msv_noNetworkView="@layout/multiple_status_network_view">
 
-        <View
+        <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent" />
     </com.lee.mvpstudy.view.LeeMultipleStatusView>
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

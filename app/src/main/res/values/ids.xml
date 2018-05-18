@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="multipleStatusView" type="id" />
     <item name="cl_status_empty" type="id" />
     <item name="cl_status_error" type="id" />
     <item name="cl_status_network" type="id" />
-
 </resources>
