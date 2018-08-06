@@ -1,11 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="VZToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="actionMenuTextColor">@color/color_cb333333</item>
+        <item name="actionMenuTextAppearance">@style/VZToolbarMenuTextSize</item>
+    </style>
+    <style name="VZToolbarMenuTextSize" parent="@style/TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">@dimen/f15</item>
     </style>
 
     <!--水平线-->

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lee.mvpstudy.view.VZToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_cw"
+    android:minHeight="@dimen/base_title_bar_height"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:theme="@style/VZToolbarTheme">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_title_bar_height">
+
+        <ImageView
+            android:id="@+id/iv_toolbar_back"
+            android:layout_width="@dimen/base_title_bar_height"
+            android:layout_height="0dp"
+            android:onClick="onBackButtonClick"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_back_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--占位-->
+        <View
+            android:id="@+id/v_placeholder_1"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/iv_toolbar_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_toolbar_back_text"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:onClick="onBackButtonClick"
+            android:text="@string/back"
+            android:textColor="@color/color_cblue1"
+            android:textSize="@dimen/f15"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/v_placeholder_1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="返回" />
+
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="82dp"
+            android:layout_marginRight="82dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/color_cw"
+            android:textSize="@dimen/f16"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_toolbar_sub_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="标题" />
+
+        <TextView
+            android:id="@+id/tv_toolbar_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color_cw"
+            android:textSize="@dimen/f12"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_toolbar_title"
+            app:layout_constraintRight_toRightOf="@+id/tv_toolbar_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_toolbar_title"
+            tools:text="副标题" />
+
+        <TextView
+            android:id="@+id/tv_toolbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:singleLine="true"
+            android:textColor="@color/color_cblue1"
+            android:textSize="@dimen/f15"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_toolbar_right"
+            android:layout_width="@dimen/base_title_bar_height"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_item_author"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_toolbar_right_1"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_item_author"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/iv_toolbar_right_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_toolbar_right_2"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_item_author"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_toolbar_bot_line"
+            style="@style/color_horizontal_line_f4_style"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</com.lee.mvpstudy.view.VZToolbar>

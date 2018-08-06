@@ -1,8 +1,11 @@
 package com.lee.mvpstudy.base;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
@@ -12,6 +15,7 @@ import com.lee.mvpstudy.mvp.BasePresenter;
 import com.lee.mvpstudy.mvp.BaseView;
 import com.lee.mvpstudy.util.ClickUtils;
 import com.lee.mvpstudy.view.LeeMultipleStatusView;
+import com.lee.mvpstudy.view.VZTitleView;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
@@ -236,5 +240,41 @@ public abstract class RxBaseActivity<P extends BasePresenter> extends RxAppCompa
      */
     public LifecycleTransformer bindToLife() {
         return this.bindUntilEvent(ActivityEvent.DESTROY); // this.bindToLifecycle()
+    }
+
+    // =====================================标题栏设置==============================================
+    protected void initTitleView(@StringRes int titleResId) {
+        initTitleView(getString(titleResId), Color.WHITE, false);
+    }
+
+    protected void initTitleView(@StringRes int titleResId, boolean isPaddingTop) {
+        initTitleView(getString(titleResId), Color.WHITE, isPaddingTop);
+    }
+
+    protected void initTitleView(String title) {
+        initTitleView(title, Color.WHITE, false);
+    }
+
+    protected void initTitleView(String title, @ColorInt int bgColor) {
+        initTitleView(title, bgColor, false);
+    }
+
+    protected void initTitleView(@StringRes int titleResId, @ColorInt int bgColor, boolean isPaddingTop) {
+        initTitleView(getString(titleResId), bgColor, isPaddingTop);
+    }
+
+    protected VZTitleView initTitleView(String title, @ColorInt int bgColor, boolean isPaddingTop) {
+        VZTitleView mTitleView = (VZTitleView) findViewById(R.id.titleView);
+        if (mTitleView == null) {
+            return null;
+        }
+
+        mTitleView.setToolbarBackgroundColor(bgColor);
+        mTitleView.setTitleText(title);
+        if (isPaddingTop) {
+            mTitleView.setPaddingTop();
+        }
+
+        return mTitleView;
     }
 }

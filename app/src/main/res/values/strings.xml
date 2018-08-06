@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MvpProject</string>
 
+    <string name="back">返回</string>
+
     <string name="loading">加载中&#8230;</string>
     <string name="load_more_end">没有更多了</string>
     <string name="load_failed">加载失败</string>
@@ -10,4 +12,5 @@
     <string name="multiple_status_error_view_hint">加载失败</string>
     <string name="multiple_status_network_view_hint">网络请求超时，请检查网络！</string>
 
+    <string name="main_title">首页</string>
 </resources>

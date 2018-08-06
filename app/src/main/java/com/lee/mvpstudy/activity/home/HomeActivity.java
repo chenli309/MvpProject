@@ -1,6 +1,7 @@
 package com.lee.mvpstudy.activity.home;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,10 +20,11 @@ import com.lee.mvpstudy.mvp.home.HomePresenter;
 import com.lee.mvpstudy.util.ListUtils;
 import com.lee.mvpstudy.view.LeeRecyclerView;
 import com.lee.mvpstudy.view.LeeSwipeRefreshLayout;
+import com.lee.mvpstudy.view.VZTitleView;
 
 import java.util.List;
 
-public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, View.OnClickListener {
 
     private LeeSwipeRefreshLayout swipeRefreshLayout;
     private LeeRecyclerView recyclerView;
@@ -47,6 +49,11 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
 
     @Override
     protected void initView() {
+        VZTitleView mTitleView = initTitleView(getString(R.string.main_title), Color.TRANSPARENT, false);
+        mTitleView.setBackVisibility(View.INVISIBLE);
+        mTitleView.setToolbarBackgroundResource(R.color.color_cblue1);
+        mTitleView.setViewOnClickListener(this);
+
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
@@ -122,6 +129,11 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
     public void loadMoreFail() {
         super.loadMoreFail();
         mAdapter.loadMoreFail();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
 //    private long exitTime = 0;
