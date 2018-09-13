@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_topic_detail_default_icon"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_des" />
+
+    <TextView
+        android:id="@+id/tv_des"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:paddingBottom="10dp"
+        android:text="这是图片的描述但是只能显示两行知道吗剩下的我都准备省略了,省略的部分我觉得会用省略号去显示这是图片的描述但是只能显示两行知道吗剩下的我都准备省略了,省略的部分我觉得会用省略号去显示这是图片的描述但是只能显示两行知道吗剩下的我都准备省略了,省略的部分我觉得会用省略号去显示这是图片的描述但是只能显示两行知道吗剩下的我都准备省略了,省略的部分我觉得会用省略号去显示"
+        app:layout_constraintBottom_toTopOf="@id/tv_all"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/iv_icon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onApplyClick"
+        android:text="点我显示全部内容"
+        android:textColor="#0d77e1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/iv_icon"
+        app:layout_constraintLeft_toRightOf="@id/iv_icon"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#223340"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_icon"
+        app:layout_constraintVertical_weight="1" />
+</android.support.constraint.ConstraintLayout>

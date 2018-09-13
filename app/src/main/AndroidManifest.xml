@@ -40,6 +40,15 @@
         <activity
             android:name=".activity.H5Activity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConstraintAnimActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConstraintAnim2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MaterialActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".webview.X5NetService"

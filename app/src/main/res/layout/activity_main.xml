@@ -10,35 +10,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <FrameLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.lee.mvpstudy.view.LeeSwipeRefreshLayout
-            android:id="@+id/swipeRefreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="homeClick"
+            android:text="Home"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.lee.mvpstudy.view.LeeRecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.lee.mvpstudy.view.LeeSwipeRefreshLayout>
+        <Button
+            android:id="@+id/btn_constraint_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="constraintAnimClick"
+            android:text="Constraint Anim"
+            app:layout_constraintLeft_toRightOf="@+id/btn_home"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.lee.mvpstudy.view.LeeMultipleStatusView
-            android:id="@+id/multipleStatusView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:msv_emptyView="@layout/multiple_status_empty_view"
-            app:msv_errorView="@layout/multiple_status_error_view"
-            app:msv_loadingView="@layout/multiple_status_loading_view"
-            app:msv_noNetworkView="@layout/multiple_status_network_view">
+        <Button
+            android:id="@+id/btn_constraint_anim2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="constraintAnim2Click"
+            android:text="Constraint Anim2"
+            app:layout_constraintLeft_toRightOf="@+id/btn_constraint_anim"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.v4.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent" />
-        </com.lee.mvpstudy.view.LeeMultipleStatusView>
-    </FrameLayout>
+        <Button
+            android:id="@+id/btn_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="materialClick"
+            android:text="Material"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_home" />
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>
 

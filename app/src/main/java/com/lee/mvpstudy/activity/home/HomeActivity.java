@@ -38,7 +38,7 @@ public class HomeActivity extends RxBaseActivity<HomePresenter> implements HomeC
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_main;
+        return R.layout.activity_home;
     }
 
     @Override
